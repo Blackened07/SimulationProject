@@ -15,10 +15,7 @@ namespace Simulation.MapSim
             get { return width; }
         }
 
-        public Dictionary<Coordinates, Entity> getMap()
-        {
-            return map;
-        }
+        
         public Entity GetEntity(Coordinates coordinates)
         {
             if (map.TryGetValue(coordinates, out Entity entity))
