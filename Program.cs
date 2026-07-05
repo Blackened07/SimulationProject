@@ -28,7 +28,7 @@ internal class Program
 
         INeighborFinder neighborFinder = new NeighborFinderWithFourDirs();
 
-        IPathFinder finder = new BFSPathFinder(neighborFinder);
+        IPathFinderWeight finder = new BFSPAthFinderWithWeight(neighborFinder);
         IAction move = new MoveAction(finder);
 
         RandomFreeCoordinatesGenerator generator = new RandomFreeCoordinatesGenerator();

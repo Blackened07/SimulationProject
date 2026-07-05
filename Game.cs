@@ -10,6 +10,7 @@ namespace Simulation
     internal class Game(Map map, ConsoleRenderer renderer, List<IAction> turnActions, List<IAction> initActions)
     {
         private bool isRunning = true;
+        private int turnsCounter = 0;
 
         public void Start()
         {
@@ -17,11 +18,12 @@ namespace Simulation
             Console.CursorVisible = false;
             while(isRunning)
             { 
+
                 NextTurn();
                 ProcessPlayerMove();                   
                 
-                renderer.Render(map);
-                Thread.Sleep(500);
+                renderer.Render(map, turnsCounter++);
+                Thread.Sleep(64);
             }
         }
 

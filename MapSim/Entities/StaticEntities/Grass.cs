@@ -7,5 +7,6 @@ namespace Simulation.MapSim.Entities.StaticEntities
 {
     internal class Grass : Entity
     {
+
     }
 }

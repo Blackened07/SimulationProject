@@ -24,7 +24,7 @@ namespace Simulation.MapSim
             }
             return new Earth();
         }
-
+        
         public IEnumerable<Entity> GetEntitiesByType(Type t)
         {
             return map.Values.Where(e => t.IsAssignableFrom(e.GetType()));
@@ -72,6 +72,11 @@ namespace Simulation.MapSim
         public List<Entity> GetAllEntities()
         {
             return map.Values.OfType<Entity>().ToList();
+        }
+
+        public bool IsOccupiedByStatic(Coordinates coordinates)
+        {
+            return map.ContainsKey(coordinates) && (GetEntity(coordinates) is Rock || GetEntity(coordinates) is Tree);
         }
 
         public bool IsOccupied(Coordinates coordinates)

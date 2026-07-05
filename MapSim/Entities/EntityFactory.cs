@@ -9,8 +9,8 @@ namespace Simulation.MapSim.Entities
     {
         private static readonly IReadOnlyDictionary<Type, Func<Entity>> creators = new Dictionary<Type, Func<Entity>>
         {
-            {typeof(Predator), () => new Predator{Health = 20, AttackPower = 3 } },
-            {typeof(Herbivore), () => new Herbivore{Health = 20, AttackPower = 1 } },
+            {typeof(Predator), () => new Predator{Health = 20, AttackPower = 3, Hunger = 1, Fear = 1 } },
+            {typeof(Herbivore), () => new Herbivore{Health = 20, AttackPower = 1, Hunger = 1, Fear = 1 } },
             {typeof(Grass), () => new Grass() },
             {typeof(Rock), () => new Rock() } 
         };

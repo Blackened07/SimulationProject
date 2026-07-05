@@ -5,6 +5,6 @@ namespace Simulation.Ui
     internal interface IView
     {
 
-        void Render(Map map);
+        void Render(Map map, int turns);
     }
 }

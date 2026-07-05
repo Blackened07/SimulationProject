@@ -1,5 +1,7 @@
 ﻿using Simulation.MapSim;
-using System.Collections.ObjectModel;
+using Simulation.MapSim.Entities;
+using Simulation.MapSim.Entities.Creatures;
+using Simulation.MapSim.Entities.StaticEntities;
 
 namespace Simulation.Path
 {
@@ -11,8 +13,8 @@ namespace Simulation.Path
      * Таргеты травоядных - еда, трава
      */
     internal class BFSPathFinder(INeighborFinder neighborFinder) : IPathFinder
-    {   
-        
+    {
+
         public List<Coordinates> Find(Map map, Coordinates start, Func<Coordinates, bool> isTarget)
         {
             HashSet<Coordinates> visited = [];
@@ -53,11 +55,11 @@ namespace Simulation.Path
                     queue.Enqueue(neighbor);
                 }
             }
-            
-            return buildPath(start, targetFound, parents);
+
+            return BuildPath(start, targetFound, parents);
         }
 
-        private List<Coordinates> buildPath(Coordinates start, Coordinates? targetFound, Dictionary<Coordinates, Coordinates> parents)
+        private List<Coordinates> BuildPath(Coordinates start, Coordinates? targetFound, Dictionary<Coordinates, Coordinates> parents)
         {   
             List<Coordinates> path = [];
 

@@ -1,4 +1,5 @@
 ﻿using Simulation.MapSim;
+using Simulation.MapSim.Entities.Creatures;
 
 namespace Simulation.Path
 {

@@ -21,7 +21,7 @@ namespace Simulation.MapSim
                     }
                     else if (i == height - 1  && j == width - 1)
                     {
-                        map.Add(new Coordinates(j, i), new Boss {Health = 50, AttackPower = 5});
+                        map.Add(new Coordinates(j, i), new Boss {Health = 150, AttackPower = 5, Hunger = 1, Fear = 50 });
                     }
                              
                 }

@@ -11,8 +11,8 @@ namespace Simulation.Actions.Spawn
     {
         protected Dictionary<Type, int> entityMinNumbers = new()
         {
-            {typeof(Predator), 2 },
-            {typeof(Herbivore), 5 },
+            {typeof(Predator), 5 },
+            {typeof(Herbivore), 8 },
             {typeof(Grass), 8 }
         };
         public void Execute(Map map)
