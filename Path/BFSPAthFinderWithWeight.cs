@@ -1,8 +1,6 @@
 ﻿using Simulation.MapSim;
 using Simulation.MapSim.Entities;
 using Simulation.MapSim.Entities.Creatures;
-using Simulation.MapSim.Entities.StaticEntities;
-
 
 namespace Simulation.Path
 {
@@ -88,7 +86,7 @@ namespace Simulation.Path
                 float cellWeight = 0f;
                 if (entity != null)
                 {
-                    cellWeight = creature.GetCellWeight(entity, entity => creature.IsCreature(entity));
+                    cellWeight = creature.GetCellWeight(entity, creature.IsCreature(entity));
                 }
                 totalScore += cellWeight / dist;
 

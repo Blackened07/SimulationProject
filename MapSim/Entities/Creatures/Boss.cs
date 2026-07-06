@@ -24,15 +24,16 @@ namespace Simulation.MapSim.Entities.Creatures
 
                 if (c.IsDead())
                 {
+                    IncreaseVitality();
                     map.Put(final, EntityFactory.CreateEarth());
                 }
             /*}*/
         }
 
-        public override float GetCellWeight(Entity entity, Func<Entity, bool> isCreature)
+        public override float GetCellWeight(Entity entity, bool isCreature)
         {
             Creature c = null;
-            if (isCreature(entity))
+            if (isCreature)
             {
                 c = (Creature)entity;
             }

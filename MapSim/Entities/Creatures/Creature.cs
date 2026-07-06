@@ -7,24 +7,26 @@ namespace Simulation.MapSim.Entities.Creatures
 {
     internal abstract class Creature : Entity
     {
+        public readonly int MAX_ENERGY = 100;
+        public int CurrentEnergy { get; set;}
         public int Health { get; set;}
         public int AttackPower { get; set;}
         public float Hunger { get; set;}
         public float Fear { get; set;}
+        public Genome Dna { get; set;}
         
-        public abstract float GetCellWeight(Entity entity, Func<Entity, bool> isCreature);
+        public abstract float GetCellWeight(Entity entity, bool isCreature);
         public abstract bool IsTarget(Entity entity);
         public abstract bool IsEnemy(Entity entity);
         public abstract void InteractWithTarget(Map map, Entity target, Coordinates final);
         public void MakeMove(Map map, IPathFinderWeight finder)
         {
             if (this.IsDead())
-            {
-                
+            { 
                 return;
             }
 
-            if (this.Hunger >= 100)
+            if (this.Hunger >= 5 || this.CurrentEnergy == 0)
             {
                 this.Health -= 1;
             }
@@ -39,13 +41,11 @@ namespace Simulation.MapSim.Entities.Creatures
                 { 
                     Entity target = map.GetEntity(bestStep);
                     InteractWithTarget(map, target, bestStep);
-                    this.Hunger = 1f;
-                    
                     
                     return;
                 }
             }
-            this.Hunger++;
+            DecreaseVitality();
             MoveTo(map, currentCoordinates, bestStep, this);
         }
 
@@ -67,11 +67,44 @@ namespace Simulation.MapSim.Entities.Creatures
             this.Health = Math.Max(0, this.Health - damage);
         }
        
+        protected void IncreaseVitality()
+        {
+            this.Hunger = 0f;
+            if (this is Herbivore)
+            {
+                this.CurrentEnergy += 20;
+            }
 
+            if (this is Predator) 
+            {
+                this.CurrentEnergy += 9;
+            }
+
+            if (this.CurrentEnergy > MAX_ENERGY)
+            {
+                this.CurrentEnergy = MAX_ENERGY;
+            }
+        }
+        protected void DecreaseVitality()
+        {
+            this.Hunger += 0.1f;
+
+            if (this.Fear > 2.0f)
+            {
+                this.CurrentEnergy -= 4;
+            }
+            else
+            {
+                this.CurrentEnergy -= 2;
+            }
+           
+        }
         private void MoveTo(Map map, Coordinates start, Coordinates next, Entity e)
         {
             map.SetEntity(start, next, e);
         }
+
+
       
     }
 }

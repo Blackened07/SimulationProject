@@ -12,35 +12,35 @@ namespace Simulation.MapSim.Entities.Creatures
 
             if (c.IsDead())
             {
-
+                IncreaseVitality();
                 map.Put(final, EntityFactory.CreateEarth());
             }
 
         }
 
-        public override float GetCellWeight(Entity entity, Func<Entity, bool> isCreature)
+        public override float GetCellWeight(Entity entity, bool isCreature)
         {
             Creature c = null;
-            if (isCreature(entity))
+            if (isCreature)
             {
                 c = (Creature)entity;
             }
 
             if (entity is Herbivore)
             {
-                return WorldWeight.Herbivore * Hunger;
+                return Dna.FoodAttraction * Hunger;
             }
             else if (entity is Predator)
             {
-                return -WorldWeight.PredatorForPredators * Fear;
+                return Dna.FearDanger * Fear;
             }
             else if (entity is Boss)
             {
                 if (c.Health < c.Health / 2)
                 {
-                    return -WorldWeight.Boss / 2 * Fear;
+                    return (-Dna.FearDanger - 60) / 2 * Fear;
                 }
-                return -WorldWeight.Boss * Fear;
+                return (-Dna.FearDanger - 60) * Fear;
             }
             return 0f;
         }

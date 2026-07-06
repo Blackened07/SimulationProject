@@ -1,4 +1,5 @@
-﻿using Simulation.MapSim;
+﻿using Simulation.Actions.Spawn;
+using Simulation.MapSim;
 using Simulation.MapSim.Entities;
 using Simulation.MapSim.Entities.Creatures;
 using Simulation.MapSim.Entities.StaticEntities;
@@ -35,11 +36,11 @@ namespace Simulation.Ui
             int predatorsAmount = map.GetEntitiesByType(typeof(Predator)).Count();
             int grassAmount = map.GetEntitiesByType(typeof(Grass)).Count();
             Console.WriteLine($"Turns amount: {turns}");
-            Console.WriteLine($"Grass amount on the map: {grassAmount};");
-            Console.WriteLine($"Herbivores amount on the map: {herbivoresAmount};");
-            Console.WriteLine($"Predators amount on the map: {predatorsAmount};");
-            Console.WriteLine($"Boss Health: {boss?.Health ?? 0};");
-            Console.WriteLine($"Boss Hunger: {boss?.Hunger ?? 0};\n");
+            Console.WriteLine($"Grass amount: {grassAmount};");
+            Console.WriteLine($"Herbivores amount: {herbivoresAmount};");
+            Console.WriteLine($"Predators amount: {predatorsAmount};");
+            Console.WriteLine($"Herbivores was born: {RespawnAction.herbivoresWasBornNum}");
+            Console.WriteLine($"Predators was born: {RespawnAction.predatorsWasBornNum}");
 
         }
 

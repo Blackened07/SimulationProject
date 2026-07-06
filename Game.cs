@@ -23,7 +23,7 @@ namespace Simulation
                 ProcessPlayerMove();                   
                 
                 renderer.Render(map, turnsCounter++);
-                Thread.Sleep(128);
+                Thread.Sleep(48);
             }
         }
 

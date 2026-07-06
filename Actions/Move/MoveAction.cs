@@ -22,6 +22,7 @@ namespace Simulation.Actions.Move
             foreach (Creature creature in creatures)
             {
                 creature.MakeMove(map, finderWeight);
+                
             }
 
             List<Creature> afterMove = map.GetEntities();
