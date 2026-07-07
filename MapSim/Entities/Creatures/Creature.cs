@@ -72,12 +72,12 @@ namespace Simulation.MapSim.Entities.Creatures
             this.Hunger = 0f;
             if (this is Herbivore)
             {
-                this.CurrentEnergy += 20;
+                this.CurrentEnergy += 19;
             }
 
             if (this is Predator) 
             {
-                this.CurrentEnergy += 9;
+                this.CurrentEnergy += 6;
             }
 
             if (this.CurrentEnergy > MAX_ENERGY)
@@ -89,7 +89,7 @@ namespace Simulation.MapSim.Entities.Creatures
         {
             this.Hunger += 0.1f;
 
-            if (this.Fear > 2.0f)
+            if (this.Fear > 2.5f)
             {
                 this.CurrentEnergy -= 4;
             }

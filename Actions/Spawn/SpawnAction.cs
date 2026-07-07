@@ -10,8 +10,8 @@ namespace Simulation.Actions.Spawn
     {
         protected Dictionary<Type, int> entityMaxNumbers = new()
         {
-            {typeof(Predator), 5 },
-            {typeof(Herbivore), 35 },
+            {typeof(Predator), 10 },
+            {typeof(Herbivore), 30 },
             {typeof(Grass), 70 },
             {typeof(Rock), 15 },
         };
